@@ -3,7 +3,79 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TRUVA – Talent Rating Universal Verification Agency</title>
+  <title>TRUVA: Where Talent Meets Trust</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+    header {
+      background-color: #003366;
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+    nav ul {
+      list-style: none;
+      background-color: #00509e;
+      padding: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin: 0;
+    }
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    section {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 1rem;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      color: #003366;
+    }
+    footer {
+      background-color: #003366;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    label {
+      font-weight: bold;
+    }
+    input, textarea {
+      padding: 0.75rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      width: 100%;
+    }
+    button {
+      background-color: #00509e;
+      color: white;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #003f7d;
+    }
+  </style>
 </head>
 <body>
 
@@ -22,18 +94,24 @@
 
   <section id="about">
     <h2>About Us</h2>
-    <p>
-      TRUVA (Talent Rating Universal Verification Agency) is Singapore’s first blockchain-powered private agency dedicated to verifying the background, skills, and reputations of foreign workers. Our goal is to protect employers and uplift trustworthy workers through dynamic, data-driven ratings.
-    </p>
-    <p>
-      Inspired by Jane Lee’s story, we are committed to building a safer and more ethical manpower system — one where trust is earned, documented, and shared.
-    </p>
+    <p>TRUVA (Talent Rating Universal Verification Agency) is Singapore’s first blockchain-powered private agency dedicated to verifying the background, skills, and reputations of foreign workers. Our goal is to protect employers and uplift trustworthy workers through dynamic, data-driven ratings.</p>
+    <p>Inspired by Jane Lee’s story, we are committed to building a safer and more ethical manpower system where trust is earned, documented, and shared.</p>
   </section>
 
   <section id="enquiry">
     <h2>Enquiry</h2>
-    <p>Interested in TRUVA’s services or pilot partnerships? Send us an email:</p>
-    <p><strong>Email:</strong> <a href="mailto:dangduongnguyen2607@gmail.com">dangduongnguyen2607@gmail.com</a></p>
+    <form action="mailto:dangduongnguyen2607@gmail.com" method="post" enctype="text/plain">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" rows="6" required></textarea>
+
+      <button type="submit">Send Enquiry</button>
+    </form>
   </section>
 
   <section id="faq">
@@ -46,7 +124,7 @@
     <p>No. TRUVA is a private-sector initiative that complements government frameworks like EP eServices and MySkillsFuture.</p>
 
     <h3>3. What does a “verification” mean?</h3>
-    <p>A verification refers to screening a foreign worker — including their degree validation, basic risk score, and work pass status. Full access includes work history, employer reviews, and more.</p>
+    <p>A verification refers to screening a foreign worker including their degree validation, basic risk score, and work pass status. Full access includes work history, employer reviews, and more.</p>
 
     <h3>4. What’s included in “limited search”?</h3>
     <p>Limited search includes access to basic degree validation and credibility summary. Full search includes filters by job role, country, rating, and red-flag history.</p>

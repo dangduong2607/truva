@@ -225,6 +225,13 @@
       color: var(--gray);
     }
     
+    .stat-subtext {
+      font-size: 0.9rem;
+      color: var(--secondary);
+      display: block;
+      margin-top: 5px;
+    }
+    
     /* Sections */
     section {
       padding: 80px 0;
@@ -377,8 +384,48 @@
     
     .detail-card h4 {
       color: var(--primary);
-      margin-bottom: 10px;
+      margin-bottom: 15px;
       font-size: 1.1rem;
+      position: relative;
+      padding-bottom: 8px;
+    }
+    
+    .detail-card h4::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background-color: var(--accent);
+    }
+    
+    .detail-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .detail-list li {
+      padding: 8px 0;
+      position: relative;
+      padding-left: 20px;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+    
+    .detail-list li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+    
+    .detail-list li:not(:last-child) {
+      border-bottom: 1px solid #f0f0f0;
+      padding-bottom: 12px;
     }
     
     .skills-list {
@@ -693,6 +740,16 @@
       .section-header h2 {
         font-size: 2rem;
       }
+      
+      .stat-item {
+        min-width: 45%;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .stat-item {
+        min-width: 100%;
+      }
     }
   </style>
 </head>
@@ -744,8 +801,8 @@
         <div class="stat-label">Verification Accuracy</div>
       </div>
       <div class="stat-item">
-        <div class="stat-number">250K+</div>
-        <div class="stat-label">Potential Fraud Prevention</div>
+        <div class="stat-number">$50k+</div>
+        <div class="stat-label">Estimated savings per fraud prevented</div>
       </div>
     </div>
   </section>
@@ -763,7 +820,6 @@
           <p>TRUVA (Talent Rating Universal Verification Agency) is Singapore's first blockchain-powered private agency dedicated to verifying the background, skills, and reputations of foreign workers.</p>
           <p>Inspired by Jane Lee's story, we are committed to building a safer and more ethical manpower system where trust is earned, documented, and shared.</p>
           <p>Our goal is to protect employers and uplift trustworthy workers through dynamic, data-driven ratings, creating a transparent ecosystem where credibility is the standard, not the exception.</p>
-          <p>Through our three-layered verification system and blockchain-secured reputation scores, we're transforming how Singapore hires foreign talent.</p>
           <a href="#enquiry" class="btn btn-primary" style="margin-top: 20px;">Contact Us</a>
         </div>
         <div class="about-image">
@@ -801,14 +857,22 @@
             <div class="founder-details">
               <div class="detail-card">
                 <h4>Education</h4>
-                <p>Ngee Ann Polytechnic - Banking & Finance</p>
-                <p>Nanyang Technological University - Accountancy & Business</p>
+                <ul class="detail-list">
+                  <li>Ngee Ann Polytechnic - Banking & Finance</li>
+                  <li>Nanyang Technological University - Accountancy & Business</li>
+                  <li>Corporate Finance Institute® - Accounting and Finance</li>
+                </ul>
               </div>
               
               <div class="detail-card">
                 <h4>Experience</h4>
-                <p>Monarch Research - Equity Research Analyst</p>
-                <p>Haiq Capital Pte Ltd - M&A Analyst</p>
+                <ul class="detail-list">
+                  <li>Monarch Research - Equity Research Analyst</li>
+                  <li>Haiq Capital Pte Ltd - M&A Analyst</li>
+                  <li>Julius Baer - Compliance Intern</li>
+                  <li>Self-employed - Freelance Photographer</li>
+                  <li>Self-employed - Mathematics Tutor</li>
+                </ul>
               </div>
             </div>
             
@@ -841,14 +905,21 @@
             <div class="founder-details">
               <div class="detail-card">
                 <h4>Education</h4>
-                <p>Ngee Ann Polytechnic - Arts Business Management</p>
-                <p>Singapore University of Social Sciences - Supply Chain Management</p>
+                <ul class="detail-list">
+                  <li>Singapore University of Social Sciences - Supply Chain Management</li>
+                  <li>Ngee Ann Polytechnic - Arts Business Management</li>
+                  <li>Chua Chu Kang Secondary School - O level, Double Pure Sciences</li>
+                </ul>
               </div>
               
               <div class="detail-card">
                 <h4>Experience</h4>
-                <p>National Heritage Board - Festivals Intern</p>
-                <p>Haig Capital Pte Ltd - Research Analyst</p>
+                <ul class="detail-list">
+                  <li>Haig Capital Pte Ltd - Research Analyst</li>
+                  <li>National Heritage Board - Festivals Intern</li>
+                  <li>NP Peerhelpers - Secretary and Events Head</li>
+                  <li>CCA Champions - Vice-President</li>
+                </ul>
               </div>
             </div>
             
@@ -986,9 +1057,17 @@
           </div>
         </div>
         <div class="faq-item">
-          <div class="faq-question">How does TRUVA use blockchain technology?</div>
+          <div class="faq-question">How does TRUVA help prevent fraud?</div>
           <div class="faq-answer">
-            <p>All verified records are stored on tamper-proof blockchain systems such as Ethereum or Polygon via platforms like OpenCerts or Accredible. This ensures that once credentials are verified, they cannot be altered or forged, creating a permanent record of authenticity.</p>
+            <p>TRUVA prevents fraud by:</p>
+            <ul>
+              <li>Verifying credentials directly with issuing institutions</li>
+              <li>Maintaining a blockchain-secured record of qualifications</li>
+              <li>Tracking employment history across multiple employers</li>
+              <li>Providing a reputation rating that evolves based on verified data</li>
+              <li>Maintaining a fraud blacklist of known offenders</li>
+            </ul>
+            <p>This comprehensive approach prevents fraudulent claims before they occur, saving employers an estimated $50k+ per fraud incident.</p>
           </div>
         </div>
         <div class="faq-item">

@@ -387,6 +387,26 @@
       resize: vertical;
     }
     
+    /* Form Submission Messages */
+    .form-message {
+      padding: 15px;
+      border-radius: 4px;
+      margin-bottom: 20px;
+      display: none;
+    }
+    
+    .form-message.success {
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+    
+    .form-message.error {
+      background-color: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+    
     /* FAQ Section */
     .faq {
       background-color: var(--light);
@@ -685,7 +705,8 @@
       </div>
       <div class="enquiry-container">
         <div class="enquiry-form">
-          <form action="mailto:dangduongnguyen2607@gmail.com" method="post" enctype="text/plain">
+          <div id="form-message" class="form-message"></div>
+          <form id="contact-form" action="https://formspree.io/f/xqalygdp" method="POST">
             <div class="form-group">
               <label for="name">Name:</label>
               <input type="text" id="name" name="name" required>
@@ -693,6 +714,14 @@
             <div class="form-group">
               <label for="email">Email:</label>
               <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone (Optional):</label>
+              <input type="tel" id="phone" name="phone">
+            </div>
+            <div class="form-group">
+              <label for="company">Company (Optional):</label>
+              <input type="text" id="company" name="company">
             </div>
             <div class="form-group">
               <label for="message">Message:</label>
@@ -706,7 +735,7 @@
           <ul class="contact-info">
             <li>
               <i class="fas fa-phone"></i>
-              <span>+65 8115 5438</span>
+              <span>+65 9189 5921</span>
             </li>
             <li>
               <i class="fas fa-envelope"></i>
@@ -818,7 +847,7 @@
           <ul class="contact-info">
             <li>
               <i class="fas fa-phone"></i>
-              <span>+65 8115 5438</span>
+              <span>+65 9189 5921</span>
             </li>
             <li>
               <i class="fas fa-envelope"></i>
@@ -866,6 +895,63 @@
         header.style.padding = '16px 0';
         header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
       }
+    });
+
+    // Form submission with Formspree
+    const form = document.getElementById('contact-form');
+    const formMessage = document.getElementById('form-message');
+    
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Show loading state
+      const submitButton = form.querySelector('button[type="submit"]');
+      submitButton.disabled = true;
+      submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+      
+      // Get form data
+      const formData = new FormData(form);
+      
+      // Send form data to Formspree
+      fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      })
+      .then(response => {
+        if (response.ok) {
+          // Success message
+          formMessage.textContent = 'Thank you! Your message has been sent successfully.';
+          formMessage.className = 'form-message success';
+          formMessage.style.display = 'block';
+          
+          // Reset form
+          form.reset();
+        } else {
+          // Error message
+          formMessage.textContent = 'There was a problem sending your message. Please try again.';
+          formMessage.className = 'form-message error';
+          formMessage.style.display = 'block';
+        }
+      })
+      .catch(error => {
+        // Error message
+        formMessage.textContent = 'There was a problem sending your message. Please try again.';
+        formMessage.className = 'form-message error';
+        formMessage.style.display = 'block';
+      })
+      .finally(() => {
+        // Reset button state
+        submitButton.disabled = false;
+        submitButton.innerHTML = 'Send Enquiry';
+        
+        // Hide message after 5 seconds
+        setTimeout(() => {
+          formMessage.style.display = 'none';
+        }, 5000);
+      });
     });
   </script>
 </body>

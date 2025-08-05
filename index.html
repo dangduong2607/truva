@@ -4,142 +4,869 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TRUVA: Where Talent Meets Trust</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    body {
-      font-family: Arial, sans-serif;
+    :root {
+      --primary: #003366;
+      --primary-dark: #002147;
+      --secondary: #0077b6;
+      --accent: #00b4d8;
+      --light: #f8f9fa;
+      --dark: #212529;
+      --success: #28a745;
+      --gray: #6c757d;
+      --light-gray: #e9ecef;
+      --transition: all 0.3s ease;
+      --shadow: 0 4px 12px rgba(0,0,0,0.08);
+      --shadow-hover: 0 8px 20px rgba(0,0,0,0.12);
+    }
+    
+    * {
       margin: 0;
       padding: 0;
-      background-color: #f4f4f4;
-      color: #333;
+      box-sizing: border-box;
     }
-    header {
-      background-color: #003366;
-      color: white;
-      padding: 2rem;
-      text-align: center;
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      color: var(--dark);
+      background-color: #f9fbfd;
+      overflow-x: hidden;
     }
-    nav ul {
-      list-style: none;
-      background-color: #00509e;
-      padding: 1rem;
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      margin: 0;
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      line-height: 1.3;
     }
-    nav ul li a {
-      color: white;
+    
+    a {
       text-decoration: none;
-      font-weight: bold;
+      color: var(--secondary);
+      transition: var(--transition);
     }
-    section {
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 1rem;
-      background-color: white;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    
+    a:hover {
+      color: var(--primary);
     }
-    h2 {
-      color: #003366;
+    
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
     }
-    footer {
-      background-color: #003366;
-      color: white;
+    
+    .btn {
+      display: inline-block;
+      padding: 12px 28px;
+      border-radius: 4px;
+      font-weight: 600;
       text-align: center;
-      padding: 1rem;
-      margin-top: 2rem;
+      cursor: pointer;
+      transition: var(--transition);
+      border: none;
+      font-family: 'Poppins', sans-serif;
     }
-    form {
+    
+    .btn-primary {
+      background-color: var(--secondary);
+      color: white;
+      box-shadow: var(--shadow);
+    }
+    
+    .btn-primary:hover {
+      background-color: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover);
+    }
+    
+    .btn-outline {
+      background-color: transparent;
+      border: 2px solid var(--secondary);
+      color: var(--secondary);
+    }
+    
+    .btn-outline:hover {
+      background-color: var(--secondary);
+      color: white;
+      transform: translateY(-2px);
+    }
+    
+    /* Header Styles */
+    header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      padding: 16px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .header-container {
       display: flex;
-      flex-direction: column;
-      gap: 1rem;
+      justify-content: space-between;
+      align-items: center;
     }
-    label {
-      font-weight: bold;
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      font-size: 24px;
+      font-weight: 800;
+      color: white;
     }
-    input, textarea {
-      padding: 0.75rem;
-      border-radius: 5px;
-      border: 1px solid #ccc;
+    
+    .logo span {
+      color: var(--accent);
+    }
+    
+    .logo i {
+      margin-right: 10px;
+      color: var(--accent);
+    }
+    
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 30px;
+    }
+    
+    nav ul li a {
+      color: rgba(255,255,255,0.85);
+      font-weight: 500;
+      position: relative;
+      padding-bottom: 5px;
+    }
+    
+    nav ul li a:hover {
+      color: white;
+    }
+    
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--accent);
+      transition: var(--transition);
+    }
+    
+    nav ul li a:hover::after {
       width: 100%;
     }
-    button {
-      background-color: #00509e;
+    
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(0, 35, 77, 0.9), rgba(0, 35, 77, 0.85)), url('https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
       color: white;
-      padding: 0.75rem;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
+      padding: 120px 0 80px;
+      text-align: center;
     }
-    button:hover {
-      background-color: #003f7d;
+    
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .hero p {
+      font-size: 1.25rem;
+      max-width: 700px;
+      margin: 0 auto 40px;
+      opacity: 0.9;
+    }
+    
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 30px;
+    }
+    
+    /* Stats Section */
+    .stats {
+      background-color: white;
+      padding: 60px 0;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    }
+    
+    .stats-container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+    
+    .stat-item {
+      text-align: center;
+      flex: 1;
+      min-width: 200px;
+    }
+    
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+    
+    .stat-label {
+      font-size: 1.1rem;
+      color: var(--gray);
+    }
+    
+    /* Sections */
+    section {
+      padding: 80px 0;
+    }
+    
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    
+    .section-header h2 {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 15px;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .section-header h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background-color: var(--accent);
+      border-radius: 2px;
+    }
+    
+    .section-header p {
+      max-width: 700px;
+      margin: 20px auto 0;
+      font-size: 1.1rem;
+      color: var(--gray);
+    }
+    
+    /* About Section */
+    .about-content {
+      display: flex;
+      gap: 50px;
+      align-items: center;
+    }
+    
+    .about-text {
+      flex: 1;
+    }
+    
+    .about-text h3 {
+      color: var(--primary);
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+    }
+    
+    .about-image {
+      flex: 1;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    
+    .about-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    /* How It Works Section */
+    .process {
+      background-color: var(--light);
+    }
+    
+    .process-steps {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-top: 40px;
+    }
+    
+    .step {
+      background-color: white;
+      border-radius: 8px;
+      padding: 30px;
+      box-shadow: var(--shadow);
+      flex: 1;
+      min-width: 250px;
+      text-align: center;
+      transition: var(--transition);
+    }
+    
+    .step:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-hover);
+    }
+    
+    .step-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--secondary) 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      color: white;
+      font-size: 30px;
+    }
+    
+    .step h3 {
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
+    
+    /* Enquiry Section */
+    .enquiry-container {
+      display: flex;
+      gap: 50px;
+    }
+    
+    .enquiry-form {
+      flex: 1;
+      background-color: white;
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: var(--primary);
+    }
+    
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid var(--light-gray);
+      border-radius: 4px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      transition: var(--transition);
+    }
+    
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--secondary);
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(0, 180, 216, 0.2);
+    }
+    
+    .form-group textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+    
+    /* FAQ Section */
+    .faq {
+      background-color: var(--light);
+    }
+    
+    .faq-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .faq-item {
+      background-color: white;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    
+    .faq-question {
+      padding: 20px 60px 20px 25px;
+      font-weight: 600;
+      cursor: pointer;
+      position: relative;
+      color: var(--primary);
+      font-size: 1.1rem;
+    }
+    
+    .faq-question::after {
+      content: '\f078';
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      position: absolute;
+      right: 25px;
+      top: 50%;
+      transform: translateY(-50%);
+      transition: var(--transition);
+    }
+    
+    .faq-item.active .faq-question::after {
+      transform: translateY(-50%) rotate(180deg);
+    }
+    
+    .faq-answer {
+      padding: 0 25px;
+      max-height: 0;
+      overflow: hidden;
+      transition: var(--transition);
+    }
+    
+    .faq-item.active .faq-answer {
+      padding: 0 25px 20px;
+      max-height: 500px;
+    }
+    
+    /* Footer */
+    footer {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      padding: 60px 0 30px;
+    }
+    
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 50px;
+      margin-bottom: 40px;
+    }
+    
+    .footer-column {
+      flex: 1;
+      min-width: 250px;
+    }
+    
+    .footer-column h3 {
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+      color: var(--accent);
+    }
+    
+    .footer-links {
+      list-style: none;
+    }
+    
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+    
+    .footer-links a {
+      color: rgba(255,255,255,0.8);
+      transition: var(--transition);
+    }
+    
+    .footer-links a:hover {
+      color: white;
+      padding-left: 5px;
+    }
+    
+    .contact-info {
+      list-style: none;
+    }
+    
+    .contact-info li {
+      margin-bottom: 15px;
+      display: flex;
+      align-items: flex-start;
+    }
+    
+    .contact-info i {
+      margin-right: 12px;
+      color: var(--accent);
+      margin-top: 4px;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    
+    .social-links a {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      transition: var(--transition);
+    }
+    
+    .social-links a:hover {
+      background-color: var(--accent);
+      transform: translateY(-3px);
+    }
+    
+    .copyright {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.6);
+      font-size: 0.9rem;
+    }
+    
+    /* Responsive Styles */
+    @media (max-width: 992px) {
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+      
+      .about-content,
+      .enquiry-container {
+        flex-direction: column;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+      }
+      
+      .hero h1 {
+        font-size: 2.3rem;
+      }
+      
+      .hero p {
+        font-size: 1.1rem;
+      }
+      
+      .hero-buttons {
+        flex-direction: column;
+        gap: 15px;
+      }
+      
+      .section-header h2 {
+        font-size: 2rem;
+      }
     }
   </style>
 </head>
 <body>
-
+  <!-- Header -->
   <header>
-    <h1>TRUVA: Where Talent Meets Trust</h1>
-    <p>Founded by Nguyen Dang Duong & Amelia Ow Yong</p>
+    <div class="container header-container">
+      <a href="#" class="logo">
+        <i class="fas fa-shield-alt"></i>
+        TRU<span>VA</span>
+      </a>
+      <nav>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#process">How It Works</a></li>
+          <li><a href="#enquiry">Enquiry</a></li>
+          <li><a href="#faq">FAQs</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <nav>
-    <ul>
-      <li><a href="#about">About Us</a></li>
-      <li><a href="#enquiry">Enquiry</a></li>
-      <li><a href="#faq">FAQs</a></li>
-    </ul>
-  </nav>
-
-  <section id="about">
-    <h2>About Us</h2>
-    <p>TRUVA (Talent Rating Universal Verification Agency) is Singapore’s first blockchain-powered private agency dedicated to verifying the background, skills, and reputations of foreign workers. Our goal is to protect employers and uplift trustworthy workers through dynamic, data-driven ratings.</p>
-    <p>Inspired by Jane Lee’s story, we are committed to building a safer and more ethical manpower system where trust is earned, documented, and shared.</p>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1>Where Talent Meets Trust</h1>
+      <p>TRUVA is Singapore's first blockchain-powered verification agency dedicated to creating a safer, more transparent hiring ecosystem for employers and foreign workers.</p>
+      <div class="hero-buttons">
+        <a href="#enquiry" class="btn btn-primary">Get Started</a>
+        <a href="#process" class="btn btn-outline">Learn More</a>
+      </div>
+    </div>
   </section>
 
-  <section id="enquiry">
-    <h2>Enquiry</h2>
-    <form action="mailto:dangduongnguyen2607@gmail.com" method="post" enctype="text/plain">
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" required>
-
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required>
-
-      <label for="message">Message:</label>
-      <textarea id="message" name="message" rows="6" required></textarea>
-
-      <button type="submit">Send Enquiry</button>
-    </form>
+  <!-- Stats Section -->
+  <section class="stats">
+    <div class="container stats-container">
+      <div class="stat-item">
+        <div class="stat-number">1.86M+</div>
+        <div class="stat-label">Non-Residents in Singapore</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">30%</div>
+        <div class="stat-label">Foreign Workforce</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Verification Accuracy</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">250K+</div>
+        <div class="stat-label">Potential Fraud Prevention</div>
+      </div>
+    </div>
   </section>
 
-  <section id="faq">
-    <h2>Frequently Asked Questions</h2>
-
-    <h3>1. What is TRUVA?</h3>
-    <p>TRUVA stands for Talent Rating Universal Verification Agency. We help employers verify the qualifications, work history, and credibility of foreign workers.</p>
-
-    <h3>2. Is TRUVA part of the government?</h3>
-    <p>No. TRUVA is a private-sector initiative that complements government frameworks like EP eServices and MySkillsFuture.</p>
-
-    <h3>3. What does a “verification” mean?</h3>
-    <p>A verification refers to screening a foreign worker including their degree validation, basic risk score, and work pass status. Full access includes work history, employer reviews, and more.</p>
-
-    <h3>4. What’s included in “limited search”?</h3>
-    <p>Limited search includes access to basic degree validation and credibility summary. Full search includes filters by job role, country, rating, and red-flag history.</p>
-
-    <h3>5. How does TRUVA use blockchain?</h3>
-    <p>All verified records are stored on tamper-proof blockchain systems such as Ethereum or Polygon via platforms like OpenCerts or Accredible.</p>
-
-    <h3>6. How can I integrate TRUVA with my HR system?</h3>
-    <p>We offer full API access and HRMS integration for systems like Workday, SAP SuccessFactors, and BambooHR. Contact us to explore partnership opportunities.</p>
-
+  <!-- About Section -->
+  <section id="about" class="about">
+    <div class="container">
+      <div class="section-header">
+        <h2>About Us</h2>
+        <p>Founded in response to a tragic event, TRUVA is dedicated to building trust in the hiring ecosystem</p>
+      </div>
+      <div class="about-content">
+        <div class="about-text">
+          <h3>Our Mission</h3>
+          <p>TRUVA (Talent Rating Universal Verification Agency) is Singapore's first blockchain-powered private agency dedicated to verifying the background, skills, and reputations of foreign workers.</p>
+          <p>Inspired by Jane Lee's story, we are committed to building a safer and more ethical manpower system where trust is earned, documented, and shared.</p>
+          <p>Our goal is to protect employers and uplift trustworthy workers through dynamic, data-driven ratings, creating a transparent ecosystem where credibility is the standard, not the exception.</p>
+          <p>Through our three-layered verification system and blockchain-secured reputation scores, we're transforming how Singapore hires foreign talent.</p>
+          <a href="#enquiry" class="btn btn-primary" style="margin-top: 20px;">Contact Us</a>
+        </div>
+        <div class="about-image">
+          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Trustworthy Business">
+        </div>
+      </div>
+    </div>
   </section>
 
+  <!-- How It Works Section -->
+  <section id="process" class="process">
+    <div class="container">
+      <div class="section-header">
+        <h2>How It Works</h2>
+        <p>Our three-layered verification system ensures talent credibility and protects employers</p>
+      </div>
+      <div class="process-steps">
+        <div class="step">
+          <div class="step-icon">
+            <i class="fas fa-user-check"></i>
+          </div>
+          <h3>Credential Verification</h3>
+          <p>Educational qualifications are directly validated with institutions and stored via blockchain. We verify degrees, certifications, and licenses with tamper-proof security.</p>
+        </div>
+        <div class="step">
+          <div class="step-icon">
+            <i class="fas fa-briefcase"></i>
+          </div>
+          <h3>Employment History</h3>
+          <p>We verify prior work experience with past employers, identify gaps and inconsistencies, and flag suspicious employment patterns across the ecosystem.</p>
+        </div>
+        <div class="step">
+          <div class="step-icon">
+            <i class="fas fa-star"></i>
+          </div>
+          <h3>Reputation Rating</h3>
+          <p>Each worker receives a dynamic rating (AAA to C) based on verified background, employer feedback, and periodic re-verification. Updated every 3 years for accuracy.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Enquiry Section -->
+  <section id="enquiry" class="enquiry">
+    <div class="container">
+      <div class="section-header">
+        <h2>Get In Touch</h2>
+        <p>Have questions about TRUVA? Reach out to our team for more information</p>
+      </div>
+      <div class="enquiry-container">
+        <div class="enquiry-form">
+          <form action="mailto:dangduongnguyen2607@gmail.com" method="post" enctype="text/plain">
+            <div class="form-group">
+              <label for="name">Name:</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+              <label for="message">Message:</label>
+              <textarea id="message" name="message" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Send Enquiry</button>
+          </form>
+        </div>
+        <div class="contact-info">
+          <h3>Contact Information</h3>
+          <ul class="contact-info">
+            <li>
+              <i class="fas fa-phone"></i>
+              <span>+65 8115 5438</span>
+            </li>
+            <li>
+              <i class="fas fa-envelope"></i>
+              <span>wallstreetman@gmail.com</span>
+            </li>
+            <li>
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Singapore</span>
+            </li>
+          </ul>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq" class="faq">
+    <div class="container">
+      <div class="section-header">
+        <h2>Frequently Asked Questions</h2>
+        <p>Find answers to common questions about TRUVA</p>
+      </div>
+      <div class="faq-container">
+        <div class="faq-item">
+          <div class="faq-question">What is TRUVA?</div>
+          <div class="faq-answer">
+            <p>TRUVA stands for Talent Rating Universal Verification Agency. We help employers verify the qualifications, work history, and credibility of foreign workers through a blockchain-powered verification system and dynamic reputation ratings.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Is TRUVA part of the government?</div>
+          <div class="faq-answer">
+            <p>No. TRUVA is a private-sector initiative that complements government frameworks like EP eServices and MySkillsFuture. We work alongside existing systems to provide an additional layer of verification and trust.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">What does a "verification" include?</div>
+          <div class="faq-answer">
+            <p>A verification refers to screening a foreign worker including their degree validation, employment history verification, and a comprehensive risk assessment. Each verification results in a dynamic reputation rating (AAA-C) that employers can trust.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">How does TRUVA use blockchain technology?</div>
+          <div class="faq-answer">
+            <p>All verified records are stored on tamper-proof blockchain systems such as Ethereum or Polygon via platforms like OpenCerts or Accredible. This ensures that once credentials are verified, they cannot be altered or forged, creating a permanent record of authenticity.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">How can I integrate TRUVA with my HR system?</div>
+          <div class="faq-answer">
+            <p>We offer full API access and HRMS integration for systems like Workday, SAP SuccessFactors, and BambooHR. Our team can work with your IT department to implement a seamless integration that embeds TRUVA verification directly into your hiring workflow.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">What makes TRUVA different from other verification services?</div>
+          <div class="faq-answer">
+            <p>TRUVA goes beyond basic verification by creating a dynamic reputation score that evolves over time. Our three-layered approach (credentials, employment history, and reputation rating) combined with blockchain security creates a comprehensive trust infrastructure unavailable elsewhere.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
   <footer>
-    <p>&copy; 2025 TRUVA. All Rights Reserved.</p>
+    <div class="container">
+      <div class="footer-container">
+        <div class="footer-column">
+          <div class="logo" style="margin-bottom: 20px;">
+            <i class="fas fa-shield-alt"></i>
+            TRU<span>VA</span>
+          </div>
+          <p style="opacity: 0.8; margin-bottom: 20px;">Building Singapore's first Talent Trust Infrastructure to protect employers and reward credible talent.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#process">How It Works</a></li>
+            <li><a href="#enquiry">Contact Us</a></li>
+            <li><a href="#faq">FAQs</a></li>
+            <li><a href="#">Pricing</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Resources</h3>
+          <ul class="footer-links">
+            <li><a href="#">Case Studies</a></li>
+            <li><a href="#">White Papers</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Documentation</a></li>
+            <li><a href="#">API Integration</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Contact</h3>
+          <ul class="contact-info">
+            <li>
+              <i class="fas fa-phone"></i>
+              <span>+65 8115 5438</span>
+            </li>
+            <li>
+              <i class="fas fa-envelope"></i>
+              <span>wallstreetman@gmail.com</span>
+            </li>
+            <li>
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Singapore</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2025 TRUVA. All Rights Reserved. Founded by Nguyen Dang Duong & Amelia Ow Yong</p>
+      </div>
+    </div>
   </footer>
 
+  <script>
+    // FAQ Accordion
+    document.querySelectorAll('.faq-question').forEach(question => {
+      question.addEventListener('click', () => {
+        const faqItem = question.parentElement;
+        faqItem.classList.toggle('active');
+      });
+    });
+    
+    // Smooth Scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+    
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      if (window.scrollY > 50) {
+        header.style.padding = '10px 0';
+        header.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
+      } else {
+        header.style.padding = '16px 0';
+        header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+      }
+    });
+  </script>
 </body>
 </html>

@@ -292,9 +292,114 @@
       display: block;
     }
     
+    /* Founders Section */
+    .founders {
+      background-color: var(--light);
+    }
+    
+    .founders-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+    
+    .founder-card {
+      background-color: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      max-width: 500px;
+      transition: var(--transition);
+    }
+    
+    .founder-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-hover);
+    }
+    
+    .founder-header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      padding: 30px;
+      text-align: center;
+      color: white;
+    }
+    
+    .founder-photo {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 5px solid rgba(255,255,255,0.3);
+      margin: 0 auto 20px;
+      overflow: hidden;
+    }
+    
+    .founder-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .founder-name {
+      font-size: 1.8rem;
+      margin-bottom: 5px;
+    }
+    
+    .founder-title {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+    
+    .founder-body {
+      padding: 30px;
+    }
+    
+    .founder-summary {
+      margin-bottom: 20px;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+    
+    .founder-details {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 25px;
+    }
+    
+    .detail-card {
+      flex: 1;
+      min-width: 200px;
+      background-color: var(--light);
+      padding: 20px;
+      border-radius: 8px;
+    }
+    
+    .detail-card h4 {
+      color: var(--primary);
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+    
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    
+    .skill-tag {
+      background-color: var(--accent);
+      color: white;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+    
     /* How It Works Section */
     .process {
-      background-color: var(--light);
+      background-color: white;
     }
     
     .process-steps {
@@ -306,7 +411,7 @@
     }
     
     .step {
-      background-color: white;
+      background-color: var(--light);
       border-radius: 8px;
       padding: 30px;
       box-shadow: var(--shadow);
@@ -561,6 +666,10 @@
       .enquiry-container {
         flex-direction: column;
       }
+      
+      .founder-card {
+        max-width: 100%;
+      }
     }
     
     @media (max-width: 768px) {
@@ -598,6 +707,7 @@
       <nav>
         <ul>
           <li><a href="#about">About Us</a></li>
+          <li><a href="#founders">Founders</a></li>
           <li><a href="#process">How It Works</a></li>
           <li><a href="#enquiry">Enquiry</a></li>
           <li><a href="#faq">FAQs</a></li>
@@ -658,6 +768,98 @@
         </div>
         <div class="about-image">
           <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Trustworthy Business">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Founders Section -->
+  <section id="founders" class="founders">
+    <div class="container">
+      <div class="section-header">
+        <h2>Our Founders</h2>
+        <p>The visionaries behind TRUVA's mission to revolutionize talent verification</p>
+      </div>
+      
+      <div class="founders-container">
+        <!-- Dang Duong Nguyen -->
+        <div class="founder-card">
+          <div class="founder-header">
+            <div class="founder-photo">
+              <img src="https://media.licdn.com/dms/image/v2/C5603AQG8Jczd7eEl2A/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1650615669071?e=1757548800&v=beta&t=23wCHoT5UziuM6X52nSE5q3Ew8lJAO9S_V7DOissGBg" alt="Dang Duong Nguyen">
+            </div>
+            <h3 class="founder-name">Dang Duong Nguyen</h3>
+            <p class="founder-title">Co-founder & Financial Strategist</p>
+          </div>
+          <div class="founder-body">
+            <p class="founder-summary">
+              Graduate of Ngee Ann Polytechnic, awarded the Diploma with Merit in Banking & Finance. 
+              Passionate about finance, investing, and continuous learning. Over 1,500+ hours completing 
+              professional certifications in financial modeling, valuation, and analytics.
+            </p>
+            
+            <div class="founder-details">
+              <div class="detail-card">
+                <h4>Education</h4>
+                <p>Ngee Ann Polytechnic - Banking & Finance</p>
+                <p>Nanyang Technological University - Accountancy & Business</p>
+              </div>
+              
+              <div class="detail-card">
+                <h4>Experience</h4>
+                <p>Monarch Research - Equity Research Analyst</p>
+                <p>Haiq Capital Pte Ltd - M&A Analyst</p>
+              </div>
+            </div>
+            
+            <div class="skills-list">
+              <span class="skill-tag">Financial Modeling</span>
+              <span class="skill-tag">Accounting</span>
+              <span class="skill-tag">Microsoft Excel</span>
+              <span class="skill-tag">Investment Analysis</span>
+              <span class="skill-tag">Risk Management</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Amelia Ow Yong -->
+        <div class="founder-card">
+          <div class="founder-header">
+            <div class="founder-photo">
+              <img src="https://media.licdn.com/dms/image/v2/D5603AQHuu5Z4AP5dDw/profile-displayphoto-shrink_200_200/B56ZYqvOTCGcAY-/0/1744473745387?e=1757548800&v=beta&t=rASqCAGySbad32EdahBVRNxgNdfJGFyCLDtdmOlyGUI" alt="Amelia Ow Yong">
+            </div>
+            <h3 class="founder-name">Amelia Ow Yong</h3>
+            <p class="founder-title">Co-founder & Operations Director</p>
+          </div>
+          <div class="founder-body">
+            <p class="founder-summary">
+              Recent graduate with a diploma in Arts Business Management from Ngee Ann Polytechnic. 
+              Currently pursuing a degree in Supply Chain Management at SUSS. Developed a solid foundation 
+              in project management, administration, and graphic design through various leadership roles.
+            </p>
+            
+            <div class="founder-details">
+              <div class="detail-card">
+                <h4>Education</h4>
+                <p>Ngee Ann Polytechnic - Arts Business Management</p>
+                <p>Singapore University of Social Sciences - Supply Chain Management</p>
+              </div>
+              
+              <div class="detail-card">
+                <h4>Experience</h4>
+                <p>National Heritage Board - Festivals Intern</p>
+                <p>Haig Capital Pte Ltd - Research Analyst</p>
+              </div>
+            </div>
+            
+            <div class="skills-list">
+              <span class="skill-tag">Project Management</span>
+              <span class="skill-tag">Market Research</span>
+              <span class="skill-tag">Event Coordination</span>
+              <span class="skill-tag">Graphic Design</span>
+              <span class="skill-tag">Administration</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -826,10 +1028,10 @@
           <h3>Quick Links</h3>
           <ul class="footer-links">
             <li><a href="#about">About Us</a></li>
+            <li><a href="#founders">Founders</a></li>
             <li><a href="#process">How It Works</a></li>
             <li><a href="#enquiry">Contact Us</a></li>
             <li><a href="#faq">FAQs</a></li>
-            <li><a href="#">Pricing</a></li>
           </ul>
         </div>
         <div class="footer-column">
